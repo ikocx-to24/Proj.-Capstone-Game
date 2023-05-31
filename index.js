@@ -103,4 +103,19 @@ async function question3() {
 }
 await question3()
 
+//Question 4
+async function question4() {
+    const answers = await inquirer.prompt({
+        name:'question_4',
+        type: 'list',
+        message: 'You enter a construction zone with reduced speed limits and orange cones.',
+        choices: [
+            'a) Maintain your speed since the construction doesnt affect your lane.',
+            'b) Follow the posted speed limits and watch for workers or equipment.',
+            'c) Speed up to get through the construction zone quickly.',
 
+        ]
+    });
+    return handleAnswer(answers.question_4 == 'b) Follow the posted speed limits and watch for workers or equipment.');
+}
+await question4()
