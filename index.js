@@ -37,7 +37,7 @@ async function askName(){
         message: 'What is your name?',
         default(){
             return 'Player';
-        },
+        },       
     });
 }
 await askName()         //Add 'Welcome to "Game title Player" later
@@ -71,5 +71,36 @@ async function question1() {
 }
 await question1()
 
+//Question 2
+async function question2() {
+    const answers = await inquirer.prompt({
+        name: 'question_2',
+        type: 'list',
+        message: 'You are driving on a highway, and a car in the adjacent lane signals to merge into your lane. What should you do?',
+        choices: [
+            'a) Speed up to pass the merging car.',
+            'b) Honk to assert your right-of-way.',
+            'c) Adjust your speed and create space for the merging car.',
+        ]
+    });
+    return handleAnswer(answers.question_2 == 'c) Adjust your speed and create space for the merging car.')
+}
+await question2()
+
+//Question 3
+async function question3() {
+    const answers = await inquirer.prompt({
+        name: 'question_3',
+        type: 'list',
+        message: 'The road ahead is wet and slippery. How should you adjust your driving?',
+        choices: [
+            'a) Continue driving at the same speed.',
+            'b) Increase your speed to maintain control.',
+            'c) Reduce your speed and increase following distance.',
+        ]
+    });
+    return handleAnswer(answers.question_3 == 'c) Reduce your speed and increase following distance.')
+}
+await question3()
 
 
