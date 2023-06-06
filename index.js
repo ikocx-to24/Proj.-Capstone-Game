@@ -8,9 +8,11 @@ import { createSpinner } from 'nanospinner';
 //Plays when game opens
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r,ms));
 
+let playerName;
+
 async function welcome() {
     const rainbowTitle = chalkAnimation.rainbow(
-        'Who wants to be a Millionaire (Streets Edition)'
+        'Who wants to be a Millionaire (Project Capstone Edition)'
     );
 
     await sleep();
@@ -28,7 +30,7 @@ async function welcome() {
 await welcome()
 
 //Asking the player name
-let playerName;
+
 
 async function askName(){
     const answers = await inquirer.prompt({
@@ -39,8 +41,11 @@ async function askName(){
             return 'Player';
         },       
     });
+    playerName = answers.player_name;
+    console.log(`Welcome to Who wants to be a Millionaire (Project Capstone Edition) ${playerName}!`)
 }
 await askName()         //Add 'Welcome to "Game title Player" later
+
 
 //Corrert or Incorrect Answer
 async function handleAnswer(isCorrect) {
@@ -119,3 +124,28 @@ async function question4() {
     return handleAnswer(answers.question_4 == 'b) Follow the posted speed limits and watch for workers or equipment.');
 }
 await question4()
+
+//Question 5
+async function question5() {
+    const answers = await inquirer.prompt({
+        name:'question_5',
+        type: 'list',
+        message: 'A school bus stops ahead, and its red lights are flashing. What should you do?',
+        choices: [
+            'a) Pass the bus quickly since youre in a hurry.',
+            'b) Stop until the bus turns off its red lights and resumes moving.',
+            'c) Slow down but continue', 
+        ]
+    });
+    return handleAnswer(answers.question_5 == 'b) Stop until the bus turns off its red lights and resumes moving.');
+}
+await question5()
+
+function winner() {
+    console.clear();
+    const msg = `Congrats, ${playerName} ! \n $ 1, 000, 000`;
+    figlet(msg, (err,data) => {
+        console.log(gradient.pastel.multiline(data));
+    });
+}
+await winner()
