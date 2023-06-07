@@ -44,8 +44,7 @@ async function askName(){
     playerName = answers.player_name;
     console.log(`Welcome to Who wants to be a Millionaire (Project Capstone Edition) ${playerName}!`)
 }
-await askName()         //Add 'Welcome to "Game title Player" later
-
+await askName()        
 
 //Corrert or Incorrect Answer
 async function handleAnswer(isCorrect) {
@@ -143,7 +142,7 @@ await question5()
 
 function winner() {
     console.clear();
-    const msg = `Congrats, ${playerName} ! \n $ 1, 000, 000`;
+    const msg = `Congrats, ${playerName} ! \nHere's   $ 1, 000, 000`;
     figlet(msg, (err,data) => {
         console.log(gradient.pastel.multiline(data));
     });
